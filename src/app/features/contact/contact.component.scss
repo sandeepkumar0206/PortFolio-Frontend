@@ -1,0 +1,109 @@
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.contact__intro .section__title {
+  max-width: 12ch;
+}
+
+.contact__lead {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 28rem;
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+}
+
+.contact__email {
+  margin: 0;
+  color: var(--muted);
+}
+
+.contact__email a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact__email a:hover,
+.contact__email a:focus-visible {
+  text-decoration: underline;
+}
+
+.contact__form {
+  display: grid;
+  gap: 1.15rem;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.contact__form label {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contact__form span {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.contact__form input,
+.contact__form textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-soft);
+  color: var(--text);
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact__form input::placeholder,
+.contact__form textarea::placeholder {
+  color: color-mix(in srgb, var(--muted) 70%, transparent);
+}
+
+.contact__form input:focus-visible,
+.contact__form textarea:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.contact__submit {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  margin-top: 0.25rem;
+}
+
+.field-error {
+  color: #f07178;
+  font-size: 0.8rem;
+}
+
+.contact__status {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.contact__status--ok {
+  color: var(--accent);
+}
+
+.contact__status--err {
+  color: #f07178;
+}
+
+@media (max-width: 800px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
