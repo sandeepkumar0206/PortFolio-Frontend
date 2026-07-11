@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RevealDirective } from '../../shared/reveal/reveal.directive';
 import { ContactService } from '../../services/contact.service';
+import { ToastService } from '../../services/toast.service';
 import { profile } from '../../data/profile';
 
 @Component({
@@ -14,10 +15,10 @@ import { profile } from '../../data/profile';
 export class ContactComponent {
   private readonly fb = inject(FormBuilder);
   private readonly contactService = inject(ContactService);
+  private readonly toast = inject(ToastService);
 
   readonly profile = profile;
   submitting = false;
-  successMessage = '';
   errorMessage = '';
 
   readonly form = this.fb.nonNullable.group({
@@ -31,7 +32,6 @@ export class ContactComponent {
   }
 
   submit(): void {
-    this.successMessage = '';
     this.errorMessage = '';
 
     if (this.form.invalid) {
@@ -41,10 +41,10 @@ export class ContactComponent {
 
     this.submitting = true;
     this.contactService.submit(this.form.getRawValue()).subscribe({
-      next: (res) => {
-        this.successMessage = res.message;
+      next: () => {
         this.form.reset();
         this.submitting = false;
+        this.toast.success("Thanks — I've got your message and I'll reach out to you soon.");
       },
       error: (err) => {
         const fields = err?.error?.fields;

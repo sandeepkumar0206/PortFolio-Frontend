@@ -63,9 +63,6 @@
         {{ submitting ? 'Sending…' : 'Send message' }}
       </button>
 
-      @if (successMessage) {
-        <p class="contact__status contact__status--ok" role="status">{{ successMessage }}</p>
-      }
       @if (errorMessage) {
         <p class="contact__status contact__status--err" role="alert">{{ errorMessage }}</p>
       }
