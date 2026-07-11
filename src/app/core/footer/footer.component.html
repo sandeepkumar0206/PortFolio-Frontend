@@ -1,0 +1,24 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__identity">
+      <p class="footer__brand">{{ profile.name }}</p>
+      <p class="footer__meta">{{ profile.role }} • {{ profile.location }}</p>
+    </div>
+
+    <ul class="footer__socials">
+      @for (social of profile.socials; track social.label) {
+        <li>
+          <a [href]="social.url" target="_blank" rel="noopener noreferrer">{{ social.label }}</a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copy">© {{ year }} {{ profile.name }}. Built with Angular &amp; Spring Boot.</p>
+    <p class="footer__status">
+      <span class="footer__dot" aria-hidden="true"></span>
+      Status: Open for opportunities
+    </p>
+  </div>
+</footer>

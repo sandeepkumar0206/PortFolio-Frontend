@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://YOUR_API_HOST',
+  apiBaseUrl: '',
 };

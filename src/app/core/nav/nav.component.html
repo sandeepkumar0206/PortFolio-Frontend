@@ -1,0 +1,47 @@
+<header class="nav" [class.nav--scrolled]="scrolled">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top" (click)="closeMenu()">{{ profile.name }}</a>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen"
+      aria-controls="site-nav"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="nav__links" [class.nav__links--open]="menuOpen" aria-label="Primary">
+      @for (link of links; track link.href) {
+        <a
+          [href]="link.href"
+          [class.nav__link--active]="activeSection === link.id"
+          (click)="closeMenu()"
+        >
+          {{ link.label }}
+        </a>
+      }
+      <a
+        class="nav__cta nav__cta--mobile"
+        [href]="profile.resumeUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="closeMenu()"
+      >
+        Resume
+      </a>
+    </nav>
+
+    <a
+      class="nav__cta nav__cta--desktop"
+      [href]="profile.resumeUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Resume
+    </a>
+  </div>
+</header>
