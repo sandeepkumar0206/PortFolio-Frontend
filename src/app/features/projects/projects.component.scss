@@ -9,9 +9,9 @@
 .projects__item {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 1.75rem;
+  gap: 1.25rem;
   align-items: start;
-  padding: 2rem 0;
+  padding: 1.25rem 0;
   border-top: 1px solid var(--line);
 }
 
@@ -32,25 +32,26 @@
 
 .projects__item h3 {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
   font-weight: 400;
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.4rem;
   letter-spacing: -0.02em;
 }
 
 .projects__item p {
-  margin: 0 0 1.1rem;
+  margin: 0 0 0.7rem;
   color: var(--muted);
   max-width: 40rem;
-  line-height: 1.65;
+  line-height: 1.55;
+  font-size: 0.95rem;
 }
 
 .projects__highlights {
   list-style: none;
-  margin: 0 0 1.1rem;
+  margin: 0 0 0.7rem;
   padding: 0;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.35rem;
   max-width: 40rem;
 }
 
@@ -58,8 +59,8 @@
   position: relative;
   padding-left: 1.1rem;
   color: var(--muted);
-  line-height: 1.65;
-  font-size: 0.98rem;
+  line-height: 1.5;
+  font-size: 0.9rem;
 }
 
 .projects__highlights li::before {

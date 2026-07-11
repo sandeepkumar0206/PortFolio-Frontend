@@ -15,7 +15,13 @@
     <form class="contact__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <label>
         <span>Name</span>
-        <input type="text" formControlName="name" autocomplete="name" placeholder="Your Name" />
+        <input
+          type="text"
+          formControlName="name"
+          autocomplete="name"
+          placeholder="Your Name"
+          maxlength="120"
+        />
         @if (form.controls.name.touched && form.controls.name.invalid) {
           <small class="field-error">Please enter your name.</small>
         }
@@ -23,7 +29,13 @@
 
       <label>
         <span>Email</span>
-        <input type="email" formControlName="email" autocomplete="email" placeholder="email@address.com" />
+        <input
+          type="email"
+          formControlName="email"
+          autocomplete="email"
+          placeholder="email@address.com"
+          maxlength="255"
+        />
         @if (form.controls.email.touched && form.controls.email.invalid) {
           <small class="field-error">Enter a valid email.</small>
         }
@@ -31,9 +43,19 @@
 
       <label>
         <span>Message</span>
-        <textarea formControlName="message" rows="5" placeholder="How can I help you?"></textarea>
-        @if (form.controls.message.touched && form.controls.message.invalid) {
+        <textarea
+          formControlName="message"
+          rows="5"
+          maxlength="2000"
+          placeholder="How can I help you?"
+        ></textarea>
+        <small class="contact__count">{{ messageLength }} / 2000</small>
+        @if (form.controls.message.touched && form.controls.message.errors?.['required']) {
+          <small class="field-error">Message is required.</small>
+        } @else if (form.controls.message.touched && form.controls.message.errors?.['minlength']) {
           <small class="field-error">Message should be at least 10 characters.</small>
+        } @else if (form.controls.message.touched && form.controls.message.errors?.['maxlength']) {
+          <small class="field-error">Message must be at most 2000 characters.</small>
         }
       </label>
 

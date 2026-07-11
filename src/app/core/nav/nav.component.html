@@ -1,6 +1,6 @@
 <header class="nav" [class.nav--scrolled]="scrolled">
   <div class="nav__inner">
-    <a class="nav__brand" href="#top" (click)="closeMenu()">{{ profile.name }}</a>
+    <a class="nav__brand" href="#top" (click)="goToSection($event, 'top')">{{ profile.name }}</a>
 
     <button
       class="nav__toggle"
@@ -19,7 +19,7 @@
         <a
           [href]="link.href"
           [class.nav__link--active]="activeSection === link.id"
-          (click)="closeMenu()"
+          (click)="goToSection($event, link.id)"
         >
           {{ link.label }}
         </a>

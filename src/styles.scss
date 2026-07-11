@@ -18,6 +18,7 @@
   --max: 1120px;
   --radius: 12px;
   --radius-sm: 8px;
+  --nav-offset: 5.75rem;
 }
 
 *,
@@ -28,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-offset);
 }
 
 body {
@@ -50,7 +52,12 @@ img {
 }
 
 .section {
-  padding: 6rem 1.25rem;
+  padding: 2.75rem 1.25rem;
+  scroll-margin-top: var(--nav-offset);
+}
+
+#top {
+  scroll-margin-top: var(--nav-offset);
 }
 
 .section__inner {
@@ -59,7 +66,7 @@ img {
 }
 
 .eyebrow {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 0.72rem;
@@ -69,11 +76,11 @@ img {
 
 .section__title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.2vw, 2.85rem);
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  margin: 0 0 1.75rem;
+  margin: 0 0 1.15rem;
   max-width: 18ch;
 }
 
@@ -82,12 +89,12 @@ img {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.85rem 1.4rem;
+  padding: 0.7rem 1.2rem;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   font: inherit;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease, border-color 0.2s ease;

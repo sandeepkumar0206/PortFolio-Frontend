@@ -26,6 +26,10 @@ export class ContactComponent {
     message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(2000)]],
   });
 
+  get messageLength(): number {
+    return this.form.controls.message.value?.length ?? 0;
+  }
+
   submit(): void {
     this.successMessage = '';
     this.errorMessage = '';
