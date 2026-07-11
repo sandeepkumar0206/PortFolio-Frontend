@@ -1,0 +1,131 @@
+.projects__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.projects__item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.75rem;
+  align-items: start;
+  padding: 2rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.projects__item--has-year {
+  grid-template-columns: 4.5rem 1fr auto;
+}
+
+.projects__item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.projects__year {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding-top: 0.35rem;
+}
+
+.projects__item h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 400;
+  margin: 0 0 0.65rem;
+  letter-spacing: -0.02em;
+}
+
+.projects__item p {
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+  max-width: 40rem;
+  line-height: 1.65;
+}
+
+.projects__highlights {
+  list-style: none;
+  margin: 0 0 1.1rem;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+  max-width: 40rem;
+}
+
+.projects__highlights li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 0.98rem;
+}
+
+.projects__highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.projects__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.projects__tags li {
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.projects__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: flex-end;
+  padding-top: 0.35rem;
+}
+
+.projects__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: opacity 0.2s ease;
+}
+
+.projects__links a:hover,
+.projects__links a:focus-visible {
+  opacity: 0.8;
+}
+
+@media (max-width: 700px) {
+  .projects__item {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .projects__links {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 0.25rem;
+  }
+}

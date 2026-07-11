@@ -1,0 +1,26 @@
+<section id="experience" class="section experience" appReveal>
+  <div class="section__inner experience__layout">
+    <header class="experience__intro">
+      <p class="eyebrow">Experience</p>
+      <h2 class="section__title">Where I've been building</h2>
+    </header>
+
+    <ol class="timeline">
+      @for (job of experiences; track job.company + job.period; let i = $index) {
+        <li class="timeline__item" [class.timeline__item--current]="i === 0">
+          <div class="timeline__marker" aria-hidden="true"></div>
+          <div class="timeline__content">
+            <p class="timeline__period">{{ job.period }}</p>
+            <h3>{{ job.role }}</h3>
+            <p class="timeline__company">{{ job.company }}</p>
+            <ul>
+              @for (item of job.highlights; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
