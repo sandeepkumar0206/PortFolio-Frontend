@@ -1,5 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { profile } from '../../data/profile';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +9,10 @@ import { profile } from '../../data/profile';
   styleUrl: './nav.component.scss',
 })
 export class NavComponent implements OnInit {
+  private readonly themeService = inject(ThemeService);
+
   readonly profile = profile;
+  readonly theme = this.themeService;
   menuOpen = false;
   scrolled = false;
   activeSection = 'about';
@@ -22,11 +26,9 @@ export class NavComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    // Home is lazy-loaded; wait for section anchors to exist.
     queueMicrotask(() => this.updateActiveSection());
     setTimeout(() => this.updateActiveSection(), 500);
 
-    // Deep link (#contact etc.): reveal any sections skipped by scroll jump.
     if (window.location.hash) {
       setTimeout(() => {
         document.querySelectorAll('.reveal:not(.reveal--visible)').forEach((node) => {
@@ -56,12 +58,15 @@ export class NavComponent implements OnInit {
     this.menuOpen = false;
   }
 
+  toggleTheme(): void {
+    this.themeService.toggle();
+  }
+
   goToSection(event: Event, sectionId: string): void {
     event.preventDefault();
     this.closeMenu();
     this.activeSection = sectionId === 'top' ? 'about' : sectionId;
 
-    // Menu jumps skip intermediate sections — keep them visible when scrolling back.
     document.querySelectorAll('.reveal:not(.reveal--visible)').forEach((node) => {
       node.classList.add('reveal--visible');
     });
@@ -93,8 +98,6 @@ export class NavComponent implements OnInit {
       }
     }
 
-    // Near page bottom: force last section active (Contact).
-    // Skip while the page is still short (home lazy-loading).
     const docHeight = document.documentElement.scrollHeight;
     const atBottom =
       docHeight > window.innerHeight + 200 &&
