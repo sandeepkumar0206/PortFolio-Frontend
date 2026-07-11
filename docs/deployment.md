@@ -83,6 +83,18 @@ Or link Postgres to the web service in Render — it may inject `DATABASE_URL` a
 
 ### 4. Deploy on host
 
+**Render (Docker):**
+
+| Setting | Value |
+|---------|--------|
+| Language | Docker |
+| Dockerfile Path | `./Dockerfile` |
+| Region | Same as Postgres (e.g. Oregon) |
+
+No separate build/start command — Docker handles it.
+
+**Other hosts:**
+
 Typical platform settings:
 
 - **Build command:** `./mvnw -DskipTests package`
