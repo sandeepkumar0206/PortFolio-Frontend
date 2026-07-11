@@ -25,9 +25,8 @@ export const profile: Profile = {
   location: 'India',
   resumeUrl: '/resume.pdf',
   socials: [
-    { label: 'GitHub', url: 'https://github.com/' },
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/' },
-    { label: 'Email', url: 'mailto:sandeepkumar073113@gmail.com' },
+    { label: 'GitHub', url: 'https://github.com/sandeepkumar0206' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/sandeepkumar8079/' },
   ],
 };
 

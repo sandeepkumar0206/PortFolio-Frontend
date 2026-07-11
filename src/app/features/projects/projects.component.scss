@@ -96,26 +96,127 @@
 
 .projects__links {
   display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  align-items: flex-end;
-  padding-top: 0.35rem;
-}
-
-.projects__links a {
-  display: inline-flex;
+  gap: 0.9rem;
   align-items: center;
-  gap: 0.35rem;
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.92rem;
-  transition: opacity 0.2s ease;
+  padding-top: 0.1rem;
 }
 
-.projects__links a:hover,
-.projects__links a:focus-visible {
-  opacity: 0.8;
+.projects__link {
+  display: flex;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.projects__orb {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.25s ease,
+    color 0.2s ease;
+}
+
+.projects__link--github:hover,
+.projects__link--github:focus-visible {
+  color: var(--accent);
+}
+
+.projects__link--github:hover .projects__orb,
+.projects__link--github:focus-visible .projects__orb {
+  transform: translateY(-3px) scale(1.06);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.projects__demo {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.7rem 0.5rem 0.75rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--accent);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, transparent), transparent 62%),
+    var(--surface);
+  border: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.25s ease,
+    color 0.2s ease;
+}
+
+.projects__demo-pulse {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);
+  animation: demo-pulse 1.8s ease-out infinite;
+}
+
+.projects__demo-title {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.projects__demo-go {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  transition: transform 0.2s ease;
+}
+
+.projects__demo:hover,
+.projects__demo:focus-visible {
+  transform: translateY(-2px);
+  border-style: solid;
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+
+.projects__demo:hover .projects__demo-go,
+.projects__demo:focus-visible .projects__demo-go {
+  transform: translateX(2px);
+}
+
+@keyframes demo-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects__demo-pulse {
+    animation: none;
+  }
 }
 
 @media (max-width: 700px) {
@@ -125,8 +226,7 @@
   }
 
   .projects__links {
-    flex-direction: row;
-    align-items: center;
-    padding-top: 0.25rem;
+    justify-self: start;
+    flex-wrap: wrap;
   }
 }
